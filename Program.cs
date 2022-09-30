@@ -60,6 +60,7 @@ Console.WriteLine("Max digit is " + max);
 7 -> нет
 */
 
+/*
 Console.Write("Input digit: ");
 int digit = Convert.ToInt32(Console.ReadLine());
 if(digit % 2 == 0){
@@ -68,3 +69,26 @@ if(digit % 2 == 0){
 else{
     Console.WriteLine(digit + " is not an even-number");
 }
+*/
+
+/*Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
+5 -> 2, 4
+8 -> 2, 4, 6, 8
+*/
+
+/*
+Console.Write("Input digit: ");
+int N = Convert.ToInt32(Console.ReadLine());
+int count = 1;
+
+if(N <= 1){
+    Console.Write("Incorrect input. Please, try again.");
+}
+
+while(count <= N){
+    if(count % 2 == 0){
+    Console.Write(count + " ");
+    }
+    count++;
+}
+*/
