@@ -33,6 +33,7 @@ Console.WriteLine($"Max digit is {max} and min digit is {min} ");
 22 3 9 -> 22
 */
 
+/*
 Console.Write("Input first digit: ");
 int dig1 = Convert.ToInt32(Console.ReadLine());
 
@@ -51,5 +52,19 @@ if(max < dig3){
     max = dig3;
 }
 Console.WriteLine("Max digit is " + max);
+*/
 
+/*Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
+4 -> да
+-3 -> нет
+7 -> нет
+*/
 
+Console.Write("Input digit: ");
+int digit = Convert.ToInt32(Console.ReadLine());
+if(digit % 2 == 0){
+    Console.WriteLine(digit + " is indeed an even-number");
+}
+else{
+    Console.WriteLine(digit + " is not an even-number");
+}
