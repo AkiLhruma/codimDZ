@@ -1,75 +1,81 @@
-﻿//Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
-/*
-int SecondDigit(int number)
-{
-    int resoult;
-
-    if(number > 99 && number < 1000){
-        resoult = number / 10 - number / 100 * 10;
-        return resoult;
-    }
-    if(number < -99 && number > -1000){
-        resoult = number / 10 - number / 100 * 10;
-        return resoult;
-    }
-    else return number;
-}
-
-Console.Write("Input three digit number: ");
-int num = Convert.ToInt32(Console.ReadLine());
-
-if(num == SecondDigit(num)) Console.WriteLine("Incorrect input.");
-else Console.WriteLine($"Second digit of {num} is {SecondDigit(num)}");
+﻿/*Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+14212 -> нет
+12821 -> да
+23432 -> да
 */
 
-//Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
 /*
-int ThirdDigit(int num)
+void Palindrom(int num)
 {
-    if(num > 99){
-        while(num > 999){
-            num = num / 10;
-        }
-        num = num % 10;
-        return num;
-    }
-    if(num < -99){
-        while(num < -999){
-            num = num / 10;
-        }
-        num = num % 10;
-        return num;
-    }
-    else return num;
+    int num1 = num % 10;
+    int num2 = num % 100 / 10;
+    int num4 = num % 10000 / 1000;
+    int num5 = num / 10000;
+
+    if(num1 == num5 && num2 == num4) Console.WriteLine("yes");
+    else Console.WriteLine("no");
 }
 
-Console.Write("Input number: ");
-int num = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input 5 digit number: ");
+int numb = Convert.ToInt32(Console.ReadLine());
 
-if(num == ThirdDigit(num)){
-    Console.WriteLine("There is no third digit in " + ThirdDigit(num));
-}
-else Console.WriteLine("Third digit is " + ThirdDigit(num));
+if(numb >= 100000 ^ numb < 10000 && numb <= -100000 ^ numb > -10000) Console.WriteLine("Incorrect input.");
+else Palindrom(numb);
 */
 
+/*Задача 21
+Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+A (3,6,8); B (2,1,-7), -> 15.84
+A (7,-5, 0); B (1,-1,9) -> 11.53
+//√((x2-x1)^2 )+(y2-y1)^2+(z2-z1)^2
+*/
 
-//Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
 /*
-string WeekDay(int day)
+double Distance(int x1, int y1, int z1, int x2, int y2, int z2)
 {
-    string holiday = "yes";
-    string weekday = "no";
-    string incor = "that's not a weekday dumbass";
+    double res = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 -y1, 2) + Math.Pow(z2 - z1, 2));
+    return Math.Round(res, 2);
+}
 
-    if(day < 1 ^ day > 7) return incor;
-    else{
-        if(day == 6 ^ day == 7) return holiday;
-        else return weekday;
+Console.Write("Input x1 coordinate: ");
+int x1 = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Input y1 coordinate: ");
+int y1 = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Input z1 coordinate: ");
+int z1 = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Input x2 coordinate: ");
+int x2 = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Input y2 coordinate: ");
+int y2 = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Input z2 coordinate: ");
+int z2 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Distance is " + Distance(x1, y1, z1, x2, y2, z2));
+*/
+
+/*Задача 23
+Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+3 -> 1, 8, 27
+5 -> 1, 8, 27, 64, 125
+*/
+/*
+void Cube(int n)
+{
+    int count = 1;
+
+    while(count <= n){
+        Console.Write(Math.Pow(count, 3) + ", ");
+        count++;
     }
 }
 
-Console.Write("Input weekday number: ");
-int dDay = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input N: ");
+int cifra = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine(WeekDay(dDay));
+Cube(cifra);
 */
