@@ -1,81 +1,133 @@
-﻿/*Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
-14212 -> нет
-12821 -> да
-23432 -> да
+﻿/*Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+3, 5 -> 243 (3⁵)
+2, 4 -> 16
 */
-
-/*
-void Palindrom(int num)
+int InputNum(string n)
 {
-    int num1 = num % 10;
-    int num2 = num % 100 / 10;
-    int num4 = num % 10000 / 1000;
-    int num5 = num / 10000;
+    Console.Write($"Input {n} number: ");
+    int num = Convert.ToInt32(Console.ReadLine());
+    return num;
+}
+/*
+int Stepen(int a, int b)
+{
+    int comp = 1;
 
-    if(num1 == num5 && num2 == num4) Console.WriteLine("yes");
-    else Console.WriteLine("no");
+    for(int cur = 1; cur <= b; cur++)
+    
+        comp *= a;
+
+    return comp;
 }
 
-Console.Write("Input 5 digit number: ");
-int numb = Convert.ToInt32(Console.ReadLine());
+int a = InputNum("A");
+int b = InputNum("B");
 
-if(numb >= 100000 ^ numb < 10000 && numb <= -100000 ^ numb > -10000) Console.WriteLine("Incorrect input.");
-else Palindrom(numb);
+int num1 = Stepen(a, b);
+
+Console.WriteLine(num1);
 */
 
-/*Задача 21
-Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
-A (3,6,8); B (2,1,-7), -> 15.84
-A (7,-5, 0); B (1,-1,9) -> 11.53
-//√((x2-x1)^2 )+(y2-y1)^2+(z2-z1)^2
+/*Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+452 -> 11
+82 -> 10
+9012 -> 12
 */
-
 /*
-double Distance(int x1, int y1, int z1, int x2, int y2, int z2)
+//variant 1
+
+int SumDigits(int num)
 {
-    double res = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 -y1, 2) + Math.Pow(z2 - z1, 2));
-    return Math.Round(res, 2);
+    int sum = 0;
+
+    while(num != 0){
+        if(num < 0) num *= -1;
+        int num1 = num % 10;
+        num = num / 10;
+        sum = sum + num1;
+    }
+    return sum;
 }
-
-Console.Write("Input x1 coordinate: ");
-int x1 = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Input y1 coordinate: ");
-int y1 = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Input z1 coordinate: ");
-int z1 = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Input x2 coordinate: ");
-int x2 = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Input y2 coordinate: ");
-int y2 = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Input z2 coordinate: ");
-int z2 = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Distance is " + Distance(x1, y1, z1, x2, y2, z2));
-*/
-
-/*Задача 23
-Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
-3 -> 1, 8, 27
-5 -> 1, 8, 27, 64, 125
 */
 /*
-void Cube(int n)
-{
-    int count = 1;
+//variant 2
 
-    while(count <= n){
-        Console.Write(Math.Pow(count, 3) + ", ");
+int SumDigits(int num)
+{
+    string str = num.ToString();
+    int len = str.Length;
+    int[] nums = new int[len];
+    int sum = 0;
+    int count = 0;
+    while(count < len){
+        nums[count] = Convert.ToInt32(str[count].ToString());
         count++;
     }
+
+    for(int i = 0; i < len; i++) 
+        sum += nums[i];
+    return sum;
 }
 
-Console.Write("Input N: ");
-int cifra = Convert.ToInt32(Console.ReadLine());
+int number = InputNum(string.Empty);
 
-Cube(cifra);
+int summ = SumDigits(number);
+
+Console.WriteLine(summ);
 */
+
+/*Задача 29: Напишите программу, которая задаёт массив из m элементов и выводит их на экран.
+m = 5 -> [1, 2, 5, 7, 19]
+m = 3 -> [6, 1, 33]
+*/
+
+void ShowArray(int[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+        Console.Write(array[i] + " ");
+    Console.WriteLine();
+}
+/*
+int[] RandomArray(int size, int minValue, int maxValue)
+{
+    int[] array = new int[size];
+    for(int i = 0; i < size; i++)
+        array[i] = new Random().Next(minValue, maxValue);
+    return array;
+}
+
+
+int m = InputNum("m");
+
+int[] myArray = RandomArray(m, 0, 100);
+
+ShowArray(myArray);
+*/
+
+//доп. задание: создание массива с элементами от пользователя
+//если инкорректный ввод сайза
+
+int[] CreateArray(int size)
+{
+int[] newArray = new int[size];
+
+for(int i = 0; i < size; i++){
+    Console.Write("input number: ");
+    newArray[i] = Convert.ToInt32(Console.ReadLine());
+}
+return newArray;
+}
+
+int size1 = InputNum("size");
+
+if(size1 < 0) size1 *= -1;
+
+int[] massiv = CreateArray(size1);
+
+/*while(size1 < 0){
+    Console.WriteLine("Incorrect input");
+    Console.Write("input size: ");
+    size1 = Convert.ToInt32(Console.ReadLine());
+}
+*/
+ShowArray(massiv);
