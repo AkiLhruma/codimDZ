@@ -70,15 +70,14 @@ void ShowArrayInt(int[,] array)
     }
 }
 
-void ElementOfArray(int [,] array, int k, int l)
+int? ElementOfArray(int [,] array, int k, int l)
 {
-    if(k < array.GetLength(0) && l < array.GetLength(1)) Console.WriteLine(array[k, l]);
-    else Console.WriteLine("Such element does not exist.");
+    if(k < array.GetLength(0) && l < array.GetLength(1)) return array[k, l];
+    else return null;
     
 }
-/*
-int[,] newArray = TwoDimensionArrayInInt();
 
+int[,] newArray = TwoDimensionArrayInInt();
 Console.Write($"Input string index: ");
 int i = Convert.ToInt32(Console.ReadLine());
 Console.Write($"Input column index: ");
@@ -86,8 +85,10 @@ int j = Convert.ToInt32(Console.ReadLine());
 
 ShowArrayInt(newArray);
 Console.WriteLine();
-ElementOfArray(newArray, i, j);
-*/
+int? element = ElementOfArray(newArray, i, j);
+if(element == null) Console.WriteLine("Such element does not exist.");
+else Console.WriteLine(element);
+
 
 
 /*Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
