@@ -146,3 +146,94 @@ if(compArr != null) ShowArrayInt(compArr);
 34(1,0,0) 41(1,1,0)
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)*/
+
+
+int[] CreatArray()
+{
+    int[] array = new int[90];
+    array[0] = 10;
+    for(int i = 1; i < array.Length; i++)
+        array[i] = array[i-1]+1;
+
+    Random r = new Random();
+
+    for(int i = array.Length-1; i >= 0; i--)
+    {
+        int j = r.Next(i + 1);
+        int temp = array[j];
+        array[j] = array[i];
+        array[i] = temp;
+    }
+    return array;
+}
+
+void ShowArray(int[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+        Console.Write(array[i] + " ");
+    Console.WriteLine();
+}
+
+int[,,] CreateArrayButIn3D(int[] arr, int x, int y, int z)
+{
+    int[,,] array = new int[x,y,z];
+    int size = arr.Length-1;
+
+    for(int i = 0; i < array.GetLength(0); i++)
+        for(int j = 0; j < array.GetLength(1); j++)
+            for(int k = 0, m = size; k < array.GetLength(2); k++, m--)
+            {
+                array[i,j,k] = arr[m];
+                size -= 1;
+            }
+    return array;
+}
+
+void Show3DArray(int[,,] array)
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+            for(int k = 0; k < array.GetLength(2); k++)
+                Console.Write(array[i,j,k] + $"({i},{j},{k}) ");
+
+            Console.WriteLine();
+        }
+    }
+}
+/*
+int[] array = CreatArray();
+ShowArray(array);
+int[,,] newArraymb = CreateArrayButIn3D(array, 2, 2, 2);
+Show3DArray(newArraymb);
+*/
+
+
+/*Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+Например, на выходе получается вот такой массив:
+01 02 03 04
+12 13 14 05
+11 16 15 06
+10 09 08 07 */
+
+int[,] SpiralArr(int x, int y)
+{
+    int size = x*y;
+    int[] array = new int[size];
+    array[0] = 1;
+    for(int i = 1; i < array.Length; i++)
+        array[i] = array[i-1]+1;
+
+    int[,] array2D = new int[x,y];
+
+    for(int i = 0; i < array2D.GetLength(0); i++)
+        for(int j = 0, k = i*y; j < array2D.GetLength(1); j++, k++)     //сдаюсь
+            array2D[i,j] = array[k];
+            
+    
+    return array2D;
+}
+
+int[,] spireArr = SpiralArr(4,5);
+ShowArrayInt(spireArr);
