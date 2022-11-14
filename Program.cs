@@ -60,12 +60,26 @@ Console.WriteLine("Summ of elements from M to N is " + res);
 m = 2, n = 3 -> A(m,n) = 9
 m = 3, n = 2 -> A(m,n) = 29*/
 
-int Akerman(int m, int n)
+long Akerman(long m, long n)
 {
     if(m == 0) return n+1;
     else if(m > 0 && n == 0) return Akerman(m-1, 1);
     else return Akerman(m-1, Akerman(m, n-1));
 }
 
-int a = Akerman(1, 8);    //больше m = 4 мой компьютер отказывается это считать О_О
+int num1;
+int num2;
+do
+{
+    Console.Write("Input M: ");
+    num1 = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input N: ");
+    num2 = Convert.ToInt32(Console.ReadLine());
+    if(num1 >= 0 && num2 >= 0) break;
+    Console.WriteLine("Incorrect input. Try again");
+    Console.WriteLine();
+}
+while(num1 < 0 | num2 < 0);
+
+long a = Akerman(num1, num2);
 Console.WriteLine(a);
