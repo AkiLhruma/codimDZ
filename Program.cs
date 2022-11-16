@@ -11,12 +11,12 @@ void Row(int n)
         if(n > 1) Row(n-1);
     }
 }
-
+/*
 Console.Write("Input N: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
 Row(num);
-
+*/
 
 
 /*Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
@@ -61,9 +61,9 @@ long Akerman(long m, long n)
     else if(m > 0 && n == 0) return Akerman(m-1, 1);
     else return Akerman(m-1, Akerman(m, n-1));
 }
-/*
-int num1;
-int num2;
+
+long num1;
+long num2;
 do
 {
     Console.Write("Input M: ");
@@ -78,4 +78,3 @@ while(num1 < 0 | num2 < 0);
 
 long a = Akerman(num1, num2);
 Console.WriteLine(a);
-*/
